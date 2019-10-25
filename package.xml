@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>smart_scaffolding_gazebo</name>
+  <version>0.1.0</version>
+  <description>Provides Gazebo plugins to expose Smart Scaffolding model to ROS</description>
+
+
+  <maintainer email="cwagner@wpi.edu">Caleb Wagner</maintainer>
+
+
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>gazebo_ros_control</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>gazebo_ros_control</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>config</run_depend>
+  <run_depend>hector_gazebo_plugins</run_depend>
+
+
+</package>

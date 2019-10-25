@@ -1,0 +1,51 @@
+<launch>
+
+
+  <arg
+      name="model" />
+    <arg
+      name="gui"
+      default="False" />
+    <param
+      name="robot_description"
+      textfile="$(find First_Iteration_Assem)/urdf/First_Iteration_Assem_Original.urdf" />
+    <param
+      name="use_gui"
+      value="$(arg gui)" />
+    <node
+      name="joint_state_publisher"
+      pkg="joint_state_publisher"
+      type="joint_state_publisher"/>
+      <!-- <remap from="/joint_states" to="/smart_scaffolding/joint_states" /> -->
+    <!-- </node> -->
+
+    <node
+      name="robot_state_publisher"
+      pkg="robot_state_publisher"
+      type="state_publisher" />
+    <node
+      name="rviz"
+      pkg="rviz"
+      type="rviz"
+      args="-d $(find First_Iteration_Assem)/urdf.rviz" />
+
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="worlds/empty.world"/>
+    <arg name="paused" value="true"/>
+  </include>
+
+   <!-- <param name="robot_description" textfile="$(find First_Iteration_Assem)/urdf/First_Iteration_Assem_Original.urdf" /> -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find First_Iteration_Assem)/urdf/First_Iteration_Assem_Original.urdf -urdf -model smart_scaffolding -z 0.2" />
+
+
+
+
+ <include file="$(find smart_scaffolding_control)/launch/phantomx_control.launch"/>
+
+
+  <node name="ss_inchworm" pkg="smart_scaffolding_gazebo" type="walker_demo.py" />
+
+
+
+</launch>
